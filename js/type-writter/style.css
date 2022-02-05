@@ -1,0 +1,69 @@
+/*****root****/
+
+:root {
+  --darker-color: #040f16;
+  --lighter-color: #fbfbff;
+  --primary-color: #3185fc;
+
+  --font-family: "Press Start 2P", cursive;
+  --font-size: 16;
+}
+
+/*****reset****/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+a:visited {
+  color: var(--darker-color);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+label {
+  font-weight: 600;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--darker-color);
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+p {
+  margin-top: 10%;
+  max-width: 60%;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    font-size: 1rem;
+    background-size: contain;
+    align-items: center;
+  }
+}
