@@ -1,0 +1,158 @@
+/*----------------------------------mixins*/
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*-------------------------------------reset*/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+html {
+  font-size: 100%;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+img,
+video,
+canvas,
+figure,
+audio,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+a,
+a:visited {
+  color: #34373b;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: inside;
+  list-style-type: none;
+}
+/*-------------------------------------layout*/
+.logo {
+  display: inline-block;
+  width: 10rem;
+  margin-right: auto;
+}
+.logo img {
+  display: block;
+}
+#burger {
+  position: relative;
+  display: none;
+  z-index: 1;
+  width: 2rem;
+  cursor: pointer;
+}
+#burger .trait {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #eeeeee;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+#burger .trait::before,
+#burger .trait::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #eeeeee;
+  border-radius: 2px;
+  transition: all 0.5s ease-in-out;
+}
+#burger .trait::before {
+  transform: translateY(-0.6rem);
+}
+#burger .trait::after {
+  transform: translateY(0.6rem);
+}
+#burger .trait.active {
+  transform: translateX(-50%);
+  background-color: transparent;
+}
+#burger .trait.active::before {
+  transform: translate(50%, 0rem) rotateZ(45deg);
+  background-color: #34373b;
+}
+#burger .trait.active::after {
+  transform: translate(50%, 0rem) rotateZ(-45deg);
+  background-color: #34373b;
+}
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: #34373b;
+  padding: 1rem 0;
+}
+nav > div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0 auto;
+}
+nav > div ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+nav > div ul li a {
+  display: block;
+  padding: 1rem;
+}
+nav > div ul li a:visited {
+  color: #eeeeee;
+}
+@media screen and (max-width: 800px) {
+  #burger {
+    display: block;
+  }
+  nav {
+    background-color: #34373b;
+    padding: 1rem 0;
+  }
+  nav > div {
+    width: 95%;
+    margin: 0 auto;
+  }
+  nav > div ul {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    width: 100%;
+    min-height: 50vh;
+    background-color: #32e0c4;
+    transition: 0.5s;
+  }
+  nav > div ul li {
+    width: 100%;
+    text-align: center;
+  }
+  nav > div ul li a:visited {
+    color: #34373b;
+  }
+  nav > div ul.open {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,152 @@
+/*-------------------------------------root*/
+
+:root {
+  --darker-color: #2b303a;
+  --lighter-color: #f1fffa;
+  --primary-color: #efe784;
+  --secondary-color: #6cbbb3;
+
+  --font-family: 'DM Sans', sans-serif;
+  --font-size: 100%;
+}
+/*-------------------------------------reset*/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  scroll-behavior: smooth;
+}
+
+img,
+video,
+canvas,
+figure,
+audio,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+a:visited {
+  color: var(--lighter-color);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: inside;
+  list-style-type: none;
+}
+
+.center {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*---------------------------------layout*/
+body {
+  background-image: url("../imgs/bcg_dev.jpg");
+}
+
+nav img,
+header a {
+  display: block;
+}
+
+section,
+body {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/*---------------------------------header*/
+header {
+  position: fixed;
+  width: 50%;
+  padding: 1.5rem;
+}
+
+header {
+  height: 100vh;
+  background: rgba(43, 48, 58, 0.8);
+  justify-content: space-between;
+}
+
+header a {
+  padding: 0.3rem 0.7rem;
+  white-space: nowrap;
+}
+.dlcv {
+  max-width: 20%;
+}
+
+/*---------------------------------navigation*/
+nav {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+nav a {
+  letter-spacing: .2rem;
+}
+
+/*---------------------------------contenu*/
+section {
+  position: sticky;
+  top: 0;
+  width: 50%;
+  margin-left: 50%;
+}
+
+main > :nth-child(2) a {
+  display: block;
+}
+
+main > :nth-child(3) {
+  background-color: pink;
+}
+
+main > :nth-child(4) {
+  background-color: white;
+}
+
+main > :nth-child(5) {
+  background-color: blue;
+}
+
+.retour{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 1025px) {
+  header,
+  section {
+    width: 100%;
+  }
+  section {
+    margin-left: 0;
+  }
+  main > :nth-child(2) {
+    z-index: -1;
+  }
+}

@@ -1,0 +1,150 @@
+/*****root****/
+:root {
+  --darker-color: #040f16;
+  --lighter-color: #fbfbff;
+  --primary-color: #3185fc;
+  --error-color: #b80c09;
+  --valid-color: #17b890;
+
+  --font-family: arial, sans-serif;
+  --font-size: 16px;
+}
+
+/*****reset****/
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+img {
+  width: 100%;
+}
+
+a,
+a:visited {
+  color: var(--darker-color);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+label {
+  font-weight: 600;
+}
+
+/****layout****/
+.container-grid {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 12rem 1fr 12rem;
+    grid-template-rows: auto 6fr auto;
+    grid-gap: 4.1rem 1%;
+}
+
+header {
+    grid-column: span 3;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--darker-color);
+    color: var(--lighter-color);
+}
+
+nav {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    max-height: 42rem;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a,
+nav a:visited {
+  display: flex;
+  height: 2.5rem;
+  color: var(--lighter-color);
+}
+
+
+main {
+    padding: 1.2rem;
+}
+
+aside {
+    padding: 1.2rem;
+    background-color: var(--primary-color);
+    color: var(--lighter-color);
+}
+aside p {
+    height: 45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    grid-column: span 3;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--darker-color);
+    color: var(--lighter-color);
+}
+
+/****responsive***/
+
+@media screen and (max-width: 764px) {
+
+    .container-grid {
+        display: flex;
+        flex-direction: column;
+            grid-gap: unset;
+    }
+    nav {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 0 0.7rem;
+        align-items: center;
+    }
+
+    main p {
+        min-height: 40rem;
+    }
+    aside p {
+        height: auto;
+    }
+
+}

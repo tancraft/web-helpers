@@ -1,0 +1,167 @@
+@darker-color: #34373b;
+@lighter-color: #eeeeee;
+@primary-color: #32e0c4;
+@icons-color: #828282;
+
+@font-family: Arial, sans-serif;
+@font-size: 100%;
+/*----------------------------------mixins*/
+.center(@width: 60%) {
+  width: @width;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*-------------------------------------reset*/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+html {
+  font-size: @font-size;
+  font-family: @font-family;
+  scroll-behavior: smooth;
+}
+
+img,
+video,
+canvas,
+figure,
+audio,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+a:visited {
+  color: @darker-color;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: inside;
+  list-style-type: none;
+}
+/*-------------------------------------layout*/
+// body {
+// 	background-color: @darker-color;
+// }
+// .slider {
+// 	.center;
+// 	figure {
+// 		position: relative;
+// 		img {
+// 			display: none;
+// 			&.active {
+// 				display: block;
+// 				animation: affiche 1s ease-in-out;
+// 			}
+// 		}
+// 		.prev,
+// 		.next {
+// 			position: absolute;
+// 			z-index: 2;
+// 			top: 0;
+// 			height: 100%;
+// 			cursor: pointer;
+// 			background-color: fade(@lighter-color, 40%);
+// 			display: flex;
+// 			align-items: center;
+
+// 			svg {
+// 				width: 4rem;
+// 				fill: @lighter-color;
+// 				filter: drop-shadow(-2px 2px 4px fade(@darker-color, 80%));
+// 			}
+// 		}
+// 		.next {
+// 			right: 0;
+// 		}
+// 	}
+// }
+
+// @keyframes affiche {
+// 	from {
+// 		opacity: 0;
+// 	}
+// 	to {
+// 		opacity: 1;
+// 	}
+// }
+
+.container {
+  background-color: @darker-color;
+}
+.slideshow-container {
+  position: relative;
+  .center;
+  text-align: center;
+}
+.mySlide {
+  display: none;
+  animation: affiche 1s ease-in-out;
+  .numberTextPorcelaine {
+    font-weight: 700;
+    padding: 1rem;
+    background-color: @lighter-color;
+  }
+  .text {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: @lighter-color;
+    background-color: @primary-color;
+  }
+  img {
+    display: block;
+  }
+  &.active {
+    display: block;
+  }
+}
+
+.prev,
+.next {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height: 100%;
+  cursor: pointer;
+  background-color: fade(@lighter-color, 40%);
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 4rem;
+    fill: @lighter-color;
+    filter: drop-shadow(-2px 2px 4px fade(@darker-color, 80%));
+  }
+}
+.next {
+  right: 0;
+}
+
+@keyframes affiche {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

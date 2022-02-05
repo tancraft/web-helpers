@@ -1,0 +1,57 @@
+*,
+:before,
+:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    text-align: center;
+}
+
+.centrer{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+div{
+    display: flex;
+    flex: 1;
+}
+
+img{
+    width: 100%;
+}
+
+.mini{
+    flex: 0.3;
+}
+.double{
+    flex: 2;
+}
+
+.triple{
+    flex: 3;
+}
+.grande{
+    flex: 5;
+}
+
+.colonne{
+    flex-direction: column;
+}
+
+.case{
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.marge{
+    margin: 0.2em;
+}
+.masque{
+    visibility: hidden;
+}

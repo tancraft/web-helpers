@@ -1,0 +1,102 @@
+/*----------------------------------mixins*/
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*-------------------------------------reset*/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+html {
+  font-size: 100%;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+img,
+video,
+canvas,
+figure,
+audio,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+a,
+a:visited {
+  color: #34373b;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: inside;
+  list-style-type: none;
+}
+/*-------------------------------------layout*/
+.container {
+  background-color: #34373b;
+}
+.slideshow-container {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+.mySlide {
+  display: none;
+  animation: affiche 1s ease-in-out;
+}
+.mySlide .numberTextPorcelaine {
+  font-weight: 700;
+  padding: 1rem;
+  background-color: #eeeeee;
+}
+.mySlide .text {
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #eeeeee;
+  background-color: #32e0c4;
+}
+.mySlide img {
+  display: block;
+}
+.mySlide.active {
+  display: block;
+}
+.prev,
+.next {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height: 100%;
+  cursor: pointer;
+  background-color: rgba(238, 238, 238, 0.4);
+  display: flex;
+  align-items: center;
+}
+.prev svg,
+.next svg {
+  width: 4rem;
+  fill: #eeeeee;
+  filter: drop-shadow(-2px 2px 4px rgba(52, 55, 59, 0.8));
+}
+.next {
+  right: 0;
+}
+@keyframes affiche {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

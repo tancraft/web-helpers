@@ -1,0 +1,117 @@
+/*****root****/
+
+:root {
+  --darker-color: #040f16;
+  --lighter-color: #fbfbff;
+  --primary-color: #3185fc;
+  --error-color: #b80c09;
+  --valid-color: #17b890;
+
+  --font-family: arial, sans-serif;
+  --font-size: 16;
+} /*****reset****/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+img {
+  width: 100%;
+}
+
+a,
+a:visited {
+  color: var(--darker-color);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+label {
+  font-weight: 600;
+}
+
+/****layout****/
+body,
+.container,
+h1 {
+  display: flex;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 2rem;
+}
+
+body {
+  background-color: var(--darker-color);
+  color: var(--lighter-color);
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.container p {
+  font-size: 2.5rem;
+}
+
+#write {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.blink {
+  margin-left: 0.2rem;
+  color: var(--lighter-color);
+  animation: blinker 0.8s infinite ease;
+  -webkit-animation: blinker 0.8s infinite ease;
+}
+
+@keyframes blinker {
+  0% {
+    color: var(--lighter-color);
+  }
+  49% {
+    color: transparent;
+  }
+  50% {
+    color: transparent;
+  }
+  99% {
+    color: var(--lighter-color);
+  }
+  100% {
+    color: var(--lighter-color);
+  }
+}

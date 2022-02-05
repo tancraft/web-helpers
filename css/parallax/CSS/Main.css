@@ -1,0 +1,151 @@
+/*****root****/
+
+:root {
+  --darker-color: #040f16;
+  --lighter-color: #fbfbff;
+  --primary-color: #3185fc;
+  --error-color: #b80c09;
+  --valid-color: #17b890;
+
+  --font-family: arial, sans-serif;
+  --font-size: 16;
+} /*****reset****/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+img {
+  width: 100%;
+}
+
+a,
+a:visited {
+  color: var(--darker-color);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: 600;
+	color: var(--lighter-color);
+}
+
+label {
+  font-weight: 600;
+}
+
+/****layout****/
+
+header{
+	display: flex;
+	height: 50vh;
+	justify-content: center;
+	align-items: center;
+	
+	background-image: url('../img/mist.jpg');
+	background-position: center;
+	background-position: cover;
+	background-repeat: no-repeat;
+	border-bottom: 2px solid var(--darker-color);
+}
+
+header h1{
+	
+	font-size: 10rem;
+	text-shadow: -2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.img{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+
+}
+
+.img1{
+	background-image: url("../img/low-angle-closeup-shot-of-beautiful-green-scenery-in-the-middle-of-canadian-forest.jpg");
+}
+
+.img2{
+	background-image: url("../img/img1.jpg");
+}
+
+.img3{
+	background-image: url("../img/paysageClair.jpg");
+}
+
+.blocText, .blockText div{
+	display: flex;
+}
+
+.blockText div p{
+	text-align: justify;
+}
+
+.blocText{
+	justify-content: center;
+	align-items: center;
+	
+	padding: 1rem;
+	max-height: 50%;
+	max-width: 80%;
+	
+	font-size: 0.9rem;
+	background: rgba(0, 0, 0, 0.8);
+	color: var(--lighter-color);
+	border-radius: 0.2rem;
+}
+
+.blocText h2{
+	font-size: 3rem;
+	margin-bottom: 0.8rem;
+}
+
+footer{
+	color: var(--lighter-color);
+	background: var(--darker-color);
+	padding: 2rem;
+	text-align: center;
+}
+
+@media screen and (max-width: 800px){
+		
+	header h1{
+	font-size: 4rem;
+}
+	
+	.blocText{
+	min-width: 100%;
+	min-height: 70%;
+	border-radius: 0;
+}
+}
