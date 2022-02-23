@@ -1,7 +1,7 @@
 @REM @ECHO OFF
 
-@REM cd %~dp0\generetest php main.php
+@REM cd %~dp0\generetest php index.php
 
 cd %~dp0
 
-php main.php
+php index.php

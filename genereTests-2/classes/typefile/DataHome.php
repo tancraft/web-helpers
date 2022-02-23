@@ -1,10 +1,17 @@
 <?php
 
-class Home extends File
+class DataHome extends DataFile
 {
-    public function __construct($name, $type)
+    public $file_extension = '';
+    public function __construct($name, $type, $dir,$ext)
     {
-        parent::__construct($name, $type);
+        parent::__construct($name, $type, $dir,$ext);
+    }
+
+    public function addExtension()
+    {
+        $obj = new Project();
+        return $obj->extensionDom;
     }
 
     public function create()

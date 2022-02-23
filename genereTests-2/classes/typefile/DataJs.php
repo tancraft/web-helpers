@@ -1,4 +1,31 @@
-console.log("it's work");class ToggleMenu {
+<?php
+
+class DataJs extends DataFile
+{
+    public function __construct($name, $type, $dir,$ext)
+    {
+        parent::__construct($name, $type, $dir,$ext);
+    }
+
+    public function create()
+    {
+        $dataJs = 'console.log("it\'s work");';
+
+        if ($this->type_project === "jeux-vidéo") {
+            $dataJs .= $this->gameJs();
+
+        } else {
+
+            $dataJs .= $this->standartJs();
+        }
+        return $dataJs;
+
+    }
+
+    public function standartJs()
+    {
+
+        $data = 'class ToggleMenu {
   constructor(burger, navbar) {
     this.burger = document.getElementById(burger);
     this.navbar = document.getElementById(navbar);
@@ -21,4 +48,16 @@ console.log("it's work");class ToggleMenu {
 window.addEventListener("DOMContentLoaded", () => {
   const burger = new ToggleMenu("burger", "navbar");
   burger.closLinks();
-});
+});';
+
+        return $data;
+    }
+
+    public function gameJs()
+    {
+
+        $data = 'console . log("video games");';
+
+        return $data;
+    }
+}

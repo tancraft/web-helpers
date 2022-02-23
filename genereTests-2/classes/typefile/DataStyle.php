@@ -1,12 +1,18 @@
 <?php
 
-class StyleFile extends File
+class DataStyle extends DataFile
 {
     private $preprocesseur;
-    public function __construct($name, $type, $preproc)
+    public $file_extension = '';
+    public function __construct($name, $type, $dir,$ext)
     {
-        parent::__construct($name, $type);
-        $this->preprocesseur = $preproc;
+        parent::__construct($name, $type, $dir,$ext);
+    }
+
+    public function addExtension()
+    {
+        $obj = new Project();
+        return $obj->preproc;
     }
 
     public function create()
