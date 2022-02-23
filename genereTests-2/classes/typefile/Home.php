@@ -9,8 +9,35 @@ class Home extends File
 
     public function create()
     {
-        $dataHtml = '<!DOCTYPE html>
-<html lang="en">
+        $dataHtml = $this->addHeader();
+
+        if ($this->type_project === "jeux-vidéo") {
+            $dataHtml .= $this->gameIndex();
+
+        } else if ($this->type_project === "design-system") {
+            $dataHtml .= $this->designSystemIndex();
+        } else if ($this->type_project === "theme-wordpress") {
+            $dataHtml .= $this->wordpressIndex();
+        } else {
+            $dataHtml .= $this->standartIndex();
+        }
+        $dataHtml .= $this->addHeader();
+
+        return $dataHtml;
+
+    }
+
+    public function addHeader()
+    {
+
+        if ($this->type_project === "theme-wordpress") {
+            $data = '<?php get_header(); ?>';
+        } else if ($this->type_project === "appli-web") {
+            $data = '<?php' . "\n\n" . 'include "../views/header.php"; ?>';
+
+        } else {
+            $data = '<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,24 +48,25 @@ class Home extends File
   <body>
     <div class="container">';
 
-        if ($this->type_project === "jeux-vidéo") {
-            $dataHtml .= $this->gameIndex();
-
-        } else if ($this->type_project === "design-system") {
-            $dataHtml .= $this->designSystemIndex();
-        } else {
-
-            $dataHtml .= $this->standartIndex();
         }
 
-        $dataHtml .= '</div>';
-        $dataHtml .= "\n\n\t" . '<script src="js/app.js"></script>';
+        return $data;
+    }
 
-        $dataHtml .= "\n\t" . '</body>
-            </html>';
+    public function addFooter()
+    {
 
-        return $dataHtml;
+        if ($this->type_project === "theme-wordpress") {
+            $data = '<?php get_footer(); ?>';
+        } else if ($this->type_project === "appli-web") {
+            $data = '<?php' . "\n\n" . 'include "../views/footer.php"; ?>';
 
+        } else {
+            $data = '</div>' . "\n\n\t" . '<script src="js/app.js"></script>' . "\n\t" . '</body>' . "\n" . '</html>';
+
+        }
+
+        return $data;
     }
 
     public function standartIndex()
@@ -81,7 +109,7 @@ class Home extends File
     public function designSystemIndex()
     {
 
-      $data = '<header>
+        $data = '<header>
 <h1>Design System</h1>
 </header>
 <main>
@@ -145,6 +173,35 @@ points="40 20 0 40 0 0 40 20"
 </section>
 </main>';
 
+        return $data;
+    }
+
+    public function wordpressIndex()
+    {
+
+        $data = '<?php if (have_posts()): ?>
+    <div class="row">
+
+        <?php while (have_posts()): the_post();?>
+	            <div class="col-sm-4">
+	                <div class="card">
+	                    <?php the_post_thumbnail("medium", ["class" => "card-img-top", "alt" => "", "style" => "height: auto;"])?>
+	                    <div class="card-body">
+	                        <h5 class="card-title"><?php the_title()?></h5>
+	                        <h6 class="card-subtitle mb-2 text-muted"><?php the_category()?></h6>
+	                        <p class="card-text">
+	                            <?php the_excerpt()?>
+	                        </p>
+	                        <a href="<?php the_permalink()?>" class="card-link">Voir plus</a>
+	                    </div>
+	                </div>
+	            </div>
+	        <?php endwhile?>
+
+    </div>
+<?php else: ?>
+    <h1>Pas d\'articles</h1>
+<?php endif;?>';
         return $data;
     }
 }

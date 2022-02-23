@@ -1,0 +1,286 @@
+@color-dark: 0 0% 20%;
+@color-white: 0 0% 100%;
+@color-primary: 192 100% 50%;
+@color-secondary: 36 100% 50%;
+@color-tertiary: 178 85% 43%;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap");
+@font-text: "Lato", sans-serif;
+
+@line-height-custom: 2.5rem;
+
+@fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+@fs-800: 3.5rem;
+@fs-700: 1.5rem;
+@fs-600: 1rem;
+@fs-500: 1.75rem;
+@fs-400: 0.9375rem;
+@fs-300: 1rem;
+@fs-200: 0.875rem;
+@flow: 0.75rem;
+@gap: 10px;
+.bc-dark {
+  background-color: hsl(@color-dark);
+}
+
+.bc-white {
+  background-color: hsl(@color-white);
+}
+
+.bc-primary {
+  background-color: hsl(@color-primary);
+}
+
+.bc-secondary {
+  background-color: hsl(@color-secondary);
+}
+
+.bc-tertiary {
+  background-color: hsl(@color-tertiary);
+}
+
+.text-dark {
+  color: hsl(@color-dark);
+}
+
+.text-white {
+  color: hsl(@color-white);
+}
+
+.text-primary {
+  color: hsl(@color-primary);
+}
+
+.text-secondary {
+  color: hsl(@color-secondary);
+}
+
+.text-tertiary {
+  color: hsl(@color-tertiary);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.letter-spacing {
+  letter-spacing: 0.1rem;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @gap;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.flow {
+  margin-bottom: @flow;
+}
+.max-flow {
+  @flow: 2rem;
+  margin-bottom: @flow;
+}
+
+.center {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+main {
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: @fs-300;
+  font-family: @font-text;
+  scroll-behavior: smooth;
+}
+body {
+  line-height: 1.5rem;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+a,
+a:visited {
+  &:extend(.text-dark);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: inside;
+  list-style-type: none;
+}
+
+button,
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}.logo {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+}
+#burger {
+  position: fixed;
+  right: 0;
+  display: none;
+  z-index: 1;
+  width: 2rem;
+  cursor: pointer;
+
+  .trait {
+    &:extend(.bc-dark);
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    width: 100%;
+    height: 0.3rem;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+
+    &::before,
+    &::after {
+      content: "";
+      &:extend(.bc-dark);
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 0.3rem;
+      border-radius: 2px;
+      transition: all 0.5s ease-in-out;
+    }
+    &::before {
+      transform: translateY(-0.6rem);
+    }
+    &::after {
+      transform: translateY(0.6rem);
+    }
+  }
+  &.active {
+    .trait {
+      transform: translateX(-50%);
+      background-color: transparent;
+      &::before {
+        &:extend(.bc-dark);
+        transform: translate(50%, 0rem) rotateZ(45deg);
+      }
+      &::after {
+        &:extend(.bc-dark);
+        transform: translate(50%, 0rem) rotateZ(-45deg);
+      }
+    }
+  }
+}
+
+.btn {
+  &:extend(.text-white);
+  background-color: hsl(@color-primary);
+  display: block;
+  width: fit-content;
+  padding: 1rem 3rem;
+  transition: 0.2s;
+  &:hover {
+    color: hsl(@color-dark);
+  }
+}
+nav {
+  > div {
+    &:extend(.d-flex);
+    justify-content: space-between;
+    align-items: center;
+    ul {
+      &:extend(.d-flex);
+      li {
+        a {
+        }
+      }
+    }
+  }
+}
+
+header {
+}
+
+section {
+  &:extend(.max-flow);
+  > div {
+    &:extend(.center);
+  }
+}
+
+footer {
+}
+
+@media screen and (max-width: 600px) {
+  #burger {
+    display: block;
+  }
+  nav {
+    padding: 1rem 0;
+    > div {
+      ul {
+        position: fixed;
+        top: 0;
+        transform: translateX(100%);
+        width: 100%;
+        transition: 0.5s;
+        li {
+          width: 100%;
+          text-align: center;
+        }
+        &.open {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+}

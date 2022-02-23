@@ -4,6 +4,7 @@ class Project
 {
     private $project_dirname = null;
     private $project_entries = [];
+    private $type_project = '';
 
     private $projectTypes = ["design-system", "design-web", "theme-wordpress", "appli-web", "jeux-vidéo"];
     private $preprocesseurs = ["css", "less"];
@@ -12,29 +13,29 @@ class Project
     {
 
         $choices = $this->userChoices();
-
         $extensionHome = array_search("theme-wordpress", $choices) || array_search("appli-web", $choices) ? "php" : "html";
 
-        $typeProject = $choices[1];
+        $this->type_project = $choices[1];
         $preproc = $choices[2];
+        $arborescence = $this->createDirectories($this->type_project);
 
         try {
 
-            $arborescence = ["css", "js"];
-
             mkdir($this->project_dirname, 0755, true);
-
+            
             foreach ($arborescence as $dir) {
                 mkdir($this->project_dirname . $dir . DIRECTORY_SEPARATOR, 0755, true);
             }
 
-            $home = new Home("index", $typeProject);
-            $style = new StyleFile("style", $typeProject, $preproc);
-            $jsApp = new JsFile("app", $typeProject);
+            $home = new Home("index", $this->type_project);
+            $style = new StyleFile("style", $this->type_project, $preproc);
+            $jsApp = new JsFile("app", $this->type_project);
 
             $dataHtml = $home->create();
             file_put_contents($this->project_dirname . 'index' . '.' . $extensionHome, $dataHtml);
-            
+
+            // ici y aura un foreach c est sur
+
             $dataStyle = $style->create();
             $dataJs = $jsApp->create();
 
@@ -51,6 +52,24 @@ class Project
             die();
         }
 
+    }
+
+    public function createDirectories($typeProject)
+    {
+        //faudra pas oublier d enlever les array_merge et de virer $arbo = ["css", "js"]; partout sauf dans le else quand j aurais fait le foreach des files
+
+        if ($typeProject == "jeux-vidéo") {
+           $arbo = array_merge(["css", "js"], ["js", "js/modules"]);
+
+        } else if ($typeProject == "appli-web") {
+           $arbo = array_merge(["css", "js"], ["views", "public", "assets", "assets/css", "assets/js"]);
+        } else if ($typeProject == "theme-wordpress") {
+            $arbo = array_merge(["css", "js"], ["assets", "assets/css", "assets/js"]);
+
+        } else {
+           $arbo = ["css", "js"];
+        }
+        return $arbo;
     }
 
     public function userChoices()
