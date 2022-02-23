@@ -84,15 +84,15 @@ ol {
 #burger .trait::after {
   transform: translateY(0.6rem);
 }
-#burger .trait.active {
+#burger.active .trait {
   transform: translateX(-50%);
   background-color: transparent;
 }
-#burger .trait.active::before {
+#burger.active .trait::before {
   transform: translate(50%, 0rem) rotateZ(45deg);
   background-color: #34373b;
 }
-#burger .trait.active::after {
+#burger.active .trait::after {
   transform: translate(50%, 0rem) rotateZ(-45deg);
   background-color: #34373b;
 }
@@ -120,7 +120,7 @@ nav > div ul li a {
 nav > div ul li a:visited {
   color: #eeeeee;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 2000px) {
   #burger {
     display: block;
   }
@@ -141,7 +141,7 @@ nav > div ul li a:visited {
     align-items: center;
     transform: translateX(100%);
     width: 100%;
-    min-height: 50vh;
+    min-height: 70vh;
     background-color: #32e0c4;
     transition: 0.5s;
   }
