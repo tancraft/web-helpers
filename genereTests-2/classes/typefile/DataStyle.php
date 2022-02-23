@@ -14,7 +14,12 @@ class DataStyle extends DataFile
         $obj = new Project();
         return $obj->preproc;
     }
-
+    
+    /**
+     * create
+     *créé les données a inserer dans le fichier style principal du projet
+     * @return string
+     */
     public function create()
     {
         $dataCss = '@color-dark: 0 0% 20%;

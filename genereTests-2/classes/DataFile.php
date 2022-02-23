@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * DataFile
+ * classe qui va servir de mere pour les classes des différents fichiers
+ */
 class DataFile
 {
     public $file_name = '';

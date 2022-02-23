@@ -3,9 +3,9 @@
 class DataHome extends DataFile
 {
     public $file_extension = '';
-    public function __construct($name, $type, $dir,$ext)
+    public function __construct($name, $type, $dir, $ext)
     {
-        parent::__construct($name, $type, $dir,$ext);
+        parent::__construct($name, $type, $dir, $ext);
     }
 
     public function addExtension()
@@ -14,6 +14,11 @@ class DataHome extends DataFile
         return $obj->extensionDom;
     }
 
+    /**
+     * create
+     * créé les données a inserer dans le fichier index principal du projet
+     * @return string
+     */
     public function create()
     {
         $dataHtml = $this->addHeader();

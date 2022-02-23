@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Project
+ * classe qui va générer toute la structure du projets
+ */
 class Project
 {
     private $project_dirname = null;
@@ -12,16 +16,31 @@ class Project
     public $preproc = '';
     public $extensionDom = '';
 
+    /**
+     * getPreproc
+     *
+     * @return string
+     */
     public function getPreproc()
     {
         return $this->preproc;
     }
 
+    /**
+     * getExtensionDom
+     *
+     * @return string
+     */
     public function getExtensionDom()
     {
         return $this->extensionDom;
     }
 
+    /**
+     * createProject
+     *
+     * @return void
+     */
     public function createProject()
     {
 
@@ -40,15 +59,10 @@ class Project
                 mkdir($this->project_dirname . $dir . DIRECTORY_SEPARATOR, 0755, true);
             }
 
-            /**
-            recuperer correctement le tableau des entree
-             */
             $this->createEntries();
 
-            var_dump($this->project_entries);
-            
             foreach ($this->project_entries as $obj) {
-                
+
                 $data = $obj->create();
                 file_put_contents($obj->file_dir . $obj->file_name . '.' . $obj->file_extension, $data);
             }
@@ -60,6 +74,11 @@ class Project
 
     }
 
+    /**
+     * userChoices
+     *
+     * @return array
+     */
     public function userChoices()
     {
         $name = readline('entrez le nom de votre Projet: ');
@@ -81,6 +100,12 @@ class Project
 
     }
 
+    /**
+     * createDirectories
+     *
+     * @param  string $typeProject
+     * @return array
+     */
     public function createDirectories($typeProject)
     {
         if ($typeProject == "jeux-vidéo") {
@@ -97,6 +122,11 @@ class Project
         return $arbo;
     }
 
+    /**
+     * createEntries
+     *
+     * @return array créé les entré pour la boucle principale de création du projet
+     */
     public function createEntries()
     {
         /**
@@ -105,32 +135,45 @@ class Project
 
         if ($this->type_project === "theme-wordpress") {
             $this->project_entries = [
-                $this->createEntry("index", $this->project_dirname, "dataHome",$this->extensionDom),
-                $this->createEntry("style", $this->project_dirname, "dataStyle",$this->preproc),
-                $this->createEntry("app", $this->project_dirname . "assets/js" . DIRECTORY_SEPARATOR, "dataJs","js"),
+                $this->createEntry("index", $this->project_dirname, "dataHome", $this->extensionDom),
+                $this->createEntry("style", $this->project_dirname, "dataStyle", $this->preproc),
+                $this->createEntry("app", $this->project_dirname . "assets/js" . DIRECTORY_SEPARATOR, "dataJs", "js"),
             ];
         } else {
             $this->project_entries = [
-                $this->createEntry("index", $this->project_dirname, "dataHome",$this->extensionDom),
-                $this->createEntry("style", $this->project_dirname . "css" . DIRECTORY_SEPARATOR, "dataStyle",$this->preproc),
-                $this->createEntry("app", $this->project_dirname . "js" . DIRECTORY_SEPARATOR, "dataJs","js"),
+                $this->createEntry("index", $this->project_dirname, "dataHome", $this->extensionDom),
+                $this->createEntry("style", $this->project_dirname . "css" . DIRECTORY_SEPARATOR, "dataStyle", $this->preproc),
+                $this->createEntry("app", $this->project_dirname . "js" . DIRECTORY_SEPARATOR, "dataJs", "js"),
             ];
         }
         $this->project_entries;
     }
-
-    public function createEntry($name, $dir, $datas,$ext)
+    
+    /**
+     * createEntry
+     *
+     * @param  string $name
+     * @param  string $dir
+     * @param  string $datas
+     * @param  string $ext
+     * @return object
+     */
+    public function createEntry($name, $dir, $datas, $ext)
     {
-        /**
-        finaliser
-         */
         $object = ucfirst($datas);
 
-        $entry = new $object($name, $this->type_project, $dir,$ext);
+        $entry = new $object($name, $this->type_project, $dir, $ext);
         return $entry;
 
     }
-
+    
+    /**
+     * saisiesKeys
+     *
+     * @param  array $tab
+     * @param  int $key
+     * @return int
+     */
     public function saisiesKeys($tab, $key)
     {
         while ($key < 0 || $key > count($tab) - 1) {

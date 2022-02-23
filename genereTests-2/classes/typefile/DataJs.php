@@ -2,11 +2,16 @@
 
 class DataJs extends DataFile
 {
-    public function __construct($name, $type, $dir,$ext)
+    public function __construct($name, $type, $dir, $ext)
     {
-        parent::__construct($name, $type, $dir,$ext);
+        parent::__construct($name, $type, $dir, $ext);
     }
 
+    /**
+     * create
+     *créé les données a inserer dans le fichier javascript principal du projet
+     * @return string
+     */
     public function create()
     {
         $dataJs = 'console.log("it\'s work");';
